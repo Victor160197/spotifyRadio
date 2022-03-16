@@ -166,6 +166,7 @@ describe('#Routes - test site for api response', () => {
                 Controller.prototype,
                 Controller.prototype.getFileStream.name,
             ).mockRejectedValue(new Error('Error: ENOENT: no such file or directy'))
+            
             await handler(...params.values())
 
             expect(params.response.writeHead).toHaveBeenCalledWith(404)
@@ -181,6 +182,7 @@ describe('#Routes - test site for api response', () => {
             Controller.prototype,
             Controller.prototype.getFileStream.name,
         ).mockRejectedValue(new Error('Error:'))
+
         await handler(...params.values())
 
         expect(params.response.writeHead).toHaveBeenCalledWith(500)
